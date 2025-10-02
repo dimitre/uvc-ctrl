@@ -1,4 +1,5 @@
 // cl /EHsc /std:c++17 uvc_ctrl.cpp  mfplat.lib mf.lib mfreadwrite.lib strmiids.lib shlwapi.lib ole32.lib oleaut32.lib
+
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <windows.h>
