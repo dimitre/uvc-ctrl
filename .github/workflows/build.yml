@@ -9,8 +9,8 @@ on:
 permissions:
   contents: write
 
-env:
-  CMAKE_CXX_COMPILER_LAUNCHER: ccache
+# env:
+# CMAKE_CXX_COMPILER_LAUNCHER: ccache
 
 jobs:
   uvc-ctrl_matrix:
@@ -28,7 +28,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ github.workflow }}
+        # working-directory: ${{ github.workflow }}
 
     steps:
       - uses: actions/checkout@v5
