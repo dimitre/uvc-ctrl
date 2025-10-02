@@ -10,9 +10,6 @@ on:
 permissions:
   contents: write
 
-# env:
-# CMAKE_CXX_COMPILER_LAUNCHER: ccache
-
 jobs:
   uvc-ctrl_matrix:
     strategy:
@@ -29,15 +26,9 @@ jobs:
     defaults:
       run:
         shell: bash
-        # working-directory: ${{ github.workflow }}
 
     steps:
       - uses: actions/checkout@v5
-
-      # - name: MSYS2 Apt Cross Compile
-      #   if: matrix.platform == 'msys2' && runner.os == 'Linux'
-      #   run: |
-      #     sudo apt install gcc-${{ matrix.prefix }} g++-${{ matrix.prefix }} binutils-${{ matrix.prefix }}
 
       - name: Install Chalet
         uses: jaxxstorm/action-install-gh-release@v2.1.0
@@ -55,17 +46,10 @@ jobs:
         run: chalet configure --toolchain ${{ matrix.toolchain }}
 
       - name: Chalet Bundle
-        if: matrix.platform != 'ios'
         run: |
-          chalet bundle --compiler-cache --show-commands
-
-      - name: iOS Bundle
-        if: matrix.platform == 'ios'
-        run: |
-          ./${{ github.workflow }}.sh
+          chalet bundle --show-commands
 
       - name: LS check built lib
-        if: matrix.platform != 'ios'
         run: |
           unzip dist/*.zip
           ls -alfR dist
@@ -74,6 +58,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         run: |
-          mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
+          # mv dist/${{ github.workflow }}.zip oflib_${{ github.workflow }}_${{ matrix.platform }}.zip
           ls -alF *.zip
           gh release upload v0.1 *.zip --clobber
