@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - ./*.cpp
+      - ./*.txt
       - .github/workflows/build.yml
 
 permissions:
