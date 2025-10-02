@@ -3,7 +3,7 @@ name: uvc-ctrl
 on:
   push:
     paths:
-      - ./**
+      - ./*
       - .github/workflows/build.yml
 
 permissions:
