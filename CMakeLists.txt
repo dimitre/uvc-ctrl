@@ -4,7 +4,7 @@ project(uvc_ctrl CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(uvc_ctrl uvc_ctrl.cpp)
+add_executable(uvc_ctrl uvc-ctrl.cpp)
 
 # Tell CMake to use the Windows 10 SDK that already contains headers/libs
 target_compile_definitions(uvc_ctrl PRIVATE
